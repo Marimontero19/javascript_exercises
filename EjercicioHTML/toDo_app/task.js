@@ -6,6 +6,7 @@ var Task = function (id, name, status) {
 
 Task.prototype.createHTMLElement = function () {
 	var $taskListItem = $('<li>').addClass("another-background");
+	$taskListItem.attr('data-index', this.id);
 	var $checkBox = $('<input>').addClass('check-tasks');
 	$checkBox.attr('type', 'checkbox');
 	$taskListItem.append($checkBox);
