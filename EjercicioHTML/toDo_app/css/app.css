@@ -1,0 +1,30 @@
+.header-container {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.main-phrase-container {
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 300px;
+}
+
+.main-phrase-container h1 {
+  margin-top: 100px;
+}
+
+.next-phrase-button {
+  margin-top: 40px;
+}
+
+.phrases-list-container {
+}
+
+.another-background {
+	background-color: green;
+}
+
+.background-task{
+	background-color: red;
+}
