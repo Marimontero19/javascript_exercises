@@ -58,10 +58,14 @@ $(document).ready(function(){
 		$('#phrase-input').val('');
 	}
 
-	function changeApperance(){
+	function changeApperance(event){
 		$newColorCheck = $(event.currentTarget);
 		var $selectedPhrase = $newColorCheck.parent();	
 		$selectedPhrase.toggleClass("background-task");
+	}
+
+	function deleteSelected(){
+		//debugger
 	}
 
 
@@ -73,5 +77,6 @@ $(document).ready(function(){
 
 	$('.phrases-lists').on('click',"button.remove-phrase", deletePhrase);
 	$('.phrases-lists').on('change',".check-phrases", changeApperance);
+	$('#delete-phrase-button').on('click', deleteSelected);
 });
 
