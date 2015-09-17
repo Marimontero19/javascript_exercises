@@ -65,7 +65,22 @@ $(document).ready(function(){
 	}
 
 	function deleteSelected(){
-		//debugger
+		var listItems = $('.phrases-lists li');
+		var selectedItems = listItems.filter(function (index){
+			return $(this).children(".check-phrases").prop("checked");
+		});	
+//debugger
+		var idsToRemove = selectedItems.map(function (index){
+			return Math.floor($(this).attr("data-index"));
+		}).toArray();
+
+		var tempPhrases = phrases.filter(function (phrase){
+			return idsToRemove.indexOf(phrase.id) == -1;
+		});
+
+		phrases = tempPhrases;
+		$(".phrases-lists").empty();
+		placePhrases();
 	}
 
 
