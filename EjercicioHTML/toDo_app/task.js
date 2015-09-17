@@ -12,7 +12,7 @@ Task.prototype.createHTMLElement = function () {
 	$taskListItem.append($checkBox);
 	$taskListItem.append(this.status + ": " + this.name);
 	var $buttonElement = $('<button>').addClass('tiny remove-task').html('x');
-	$buttonElement.attr("data-index", this.id);
+	//$buttonElement.attr("data-index", this.id);
 	$taskListItem.append($buttonElement); //append me anade elementos al espacio del html
 
 	return $taskListItem;

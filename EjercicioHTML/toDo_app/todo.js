@@ -19,7 +19,7 @@ $(document).ready(function(){
 	}
 
 	function removeTask(event){
-		var idToRemove = $(event.currentTarget).attr("data-index");
+		var idToRemove = $(event.currentTarget).parent().attr("data-index");
 		var tempTasks = tasks.filter(function (task) {
 			return task.id != idToRemove;
 		});
