@@ -5,6 +5,7 @@ var Phrase = function(id,name){
 
 Phrase.prototype.putHTMLElement = function (){
 		var phraseItemElement = $('<li>');
+		phraseItemElement.attr("data-index",this.id);
 
 		var $checkBox = $('<input>').addClass('check-phrases');
 		$checkBox.attr('type', 'checkbox');

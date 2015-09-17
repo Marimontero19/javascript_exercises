@@ -69,7 +69,7 @@ $(document).ready(function(){
 		var selectedItems = listItems.filter(function (index){
 			return $(this).children(".check-phrases").prop("checked");
 		});	
-//debugger
+
 		var idsToRemove = selectedItems.map(function (index){
 			return Math.floor($(this).attr("data-index"));
 		}).toArray();
