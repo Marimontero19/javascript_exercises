@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Phrases</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <!-- This is how you would link your custom stylesheet -->
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="js/vendor/modernizr.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script type="text/javascript" src="phrases3.js"></script>
+     <script type="text/javascript" src="dophrase.js"></script>
+  </head>
+  <body>
+    <div class="row header-container">
+      <div class="large-offset-1 large-10 columns main-phrase-container">
+        <h1 id="phrase-title"></h1>
+        <button type="button" class="button small next-phrase-button" name="button" id="next-phrase-button">Next</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-offset-1 large-4 columns phrases-list-container">
+        <input type="text" placeholder="Add a phrase" id="phrase-input">
+        <button type="button" class="button tiny add-phrase-button" name="button" id="add-phrase-button">Add phrase</button>
+        <button type="button" class="button tiny add-phrase-button" name="button" id="delete-phrase-button">Delete phrases</button>
+        <p>List of phrases:</p>
+        <ul class="phrases-lists"></ul>
+      </div>
+    </div>
+
+  </body>
+</html>
