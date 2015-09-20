@@ -1,22 +1,26 @@
 $(document).ready(function(){
 
-	var nextPhraseId = 1;
+	var phrasesManager = new TodoManager();
+	phrasesManager.placePhrases();
+	phrasesManager.thePhrases();
+	phrasesManager.deletePhrase();
+	//var nextPhraseId = 1;
 
-	var firstPhrase = new Phrase(nextPhraseId, "This is a cool phrase");
-	nextPhraseId += 1;
+	//var firstPhrase = new Phrase(nextPhraseId, "This is a cool phrase");
+	//nextPhraseId += 1;
 
-	var secondPhrase = new Phrase(nextPhraseId, "Another phrase");
-	nextPhraseId += 1;
+	//var secondPhrase = new Phrase(nextPhraseId, "Another phrase");
+	//nextPhraseId += 1;
 
-	var phrases = [
-		firstPhrase, 
-		secondPhrase, 
-		new Phrase(nextPhraseId, "This should be another phrase")
-	];
-	nextPhraseId += 1;
+	//var phrases = [
+		//firstPhrase, 
+		//secondPhrase, 
+		//new Phrase(nextPhraseId, "This should be another phrase")
+	//];
+	//nextPhraseId += 1;
 
 
-	currentIndexSlideShow = 0;
+	//currentIndexSlideShow = 0;
 	function updatePhrase() {
 		var currentPhrase = phrases[currentIndexSlideShow];
 		var titleElement = $('#phrase-title');
@@ -25,25 +29,25 @@ $(document).ready(function(){
 	}
 
 
-	function placePhrases() {
+	//function placePhrases() {
 
-		phrases.forEach(function (phrase, index){
-			var phraseItemElement = phrase.putHTMLElement();
-			$('ul.phrases-lists').append(phraseItemElement);
+		//phrases.forEach(function (phrase, index){
+			//var phraseItemElement = phrase.putHTMLElement();
+			//$('ul.phrases-lists').append(phraseItemElement);
 
-		});
-	}
+		//});
+	//}
 
-	function deletePhrase(event){
+	//function deletePhrase(event){
 		//var $buttonClicked = $(event.currentTarget);
-		var idToRemove = $(event.currentTarget).attr("data-index");
-		var tempPhrases = phrases.filter(function (phrase) {
-			return phrase.id != idToRemove;
-		});
-		phrases = tempPhrases;
-		$(".phrases-lists").empty();
-		placePhrases();
-	}
+		//var idToRemove = $(event.currentTarget).attr("data-index");
+		//var tempPhrases = phrases.filter(function (phrase) {
+		//	return phrase.id != idToRemove;
+		//});
+		//phrases = tempPhrases;
+		//$(".phrases-lists").empty();
+		//placePhrases();
+	//}
 
 	function addPhrase() {
 
@@ -84,7 +88,7 @@ $(document).ready(function(){
 	}
 
 
-	$('#add-phrase-button').on('click', addPhrase);
+	//$('#add-phrase-button').on('click', addPhrase);
 	$('#next-phrase-button').on('click', updatePhrase);
 
 	placePhrases();
