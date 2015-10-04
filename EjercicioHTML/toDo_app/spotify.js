@@ -16,15 +16,18 @@ $(document).ready(function(){
 		});
 	}
 
+	function createElement(artistInfo){
+		//console.log(artistInfo.name);
+		var $artistItem = $('<li>');
+		$artistItem.html(artistInfo.name);
+		$('#artist-info').append($artistItem);
+	}
+
 	function printArtists(artists){
 		//console.log(artistsInfo);
 		artists.forEach(function(artist) {
 			createElement(artist);
 		});
-	}
-
-	function createElement(artistInfo){
-		console.log(artistInfo.name);
 	}
 
 
