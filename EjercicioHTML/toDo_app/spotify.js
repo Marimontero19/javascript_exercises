@@ -16,7 +16,7 @@ $(document).ready(function(){
 				console.log(error);
 			}
 		});
-	}
+	};
 
 	function getAlbums(event) {
 		event.preventDefault();
@@ -24,9 +24,6 @@ $(document).ready(function(){
 		var albumsUrl = $artistSelected.attr('data-url');
 		$.ajax({
 			type: "GET",
-		});
-	};
-
 			url: albumsUrl,
 			success: function(response){
 				$('#artist-albums').empty();
@@ -35,6 +32,26 @@ $(document).ready(function(){
 			error: function(error){
 				console.log(error);
 			}
+		});
+	};
+
+	function getSongs(event) {
+		event.preventDefault();
+		var $trackSelected = $(event.currentTarget);
+		var trackUrl = $trackSelected.attr('data-url');
+		$.ajax({
+			type: "GET",
+			url: trackUrl,
+			success: function(response){
+				$('#tracks-album').empty();
+				printTracks(response.items);
+			},
+			error: function(error){
+				console.log(error);
+			}
+		});
+	};
+
 	function createElement(artistInfo){
 		//console.log(artistInfo.name);
 		var $artistItem = $('<li>');
@@ -70,8 +87,21 @@ $(document).ready(function(){
 
 	}
 
-	function getTracks(event){
-		debugger
+	function getTracks(trackInfo){
+		var $trackItem = $('<li>');
+		var $trackLink = $('<a href="#">').addClass('track-result');
+		var trackUrl = trackInfo.href + "/tracks";
+		$trackLink.attr('data-url', trackUrl)
+		$trackLink.html(trackInfo.name);
+		$trackItem.html($trackLink);
+		$('#tracks-album').append($trackItem);
+	
+	}
+
+	function printTracks(tracks){
+		tracks.forEach(function(track){
+			getTracks(track);
+		});
 	}
 
 
