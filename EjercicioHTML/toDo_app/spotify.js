@@ -37,14 +37,14 @@ $(document).ready(function(){
 
 	function getSongs(event) {
 		event.preventDefault();
-		var $trackSelected = $(event.currentTarget);
-		var trackUrl = $trackSelected.attr('data-url');
+		var $albumSelected = $(event.currentTarget);//elemento de dom que se clicka en le momento
+		var albumUrl = $albumSelected.attr('data-url');
 		$.ajax({
 			type: "GET",
-			url: trackUrl,
+			url: albumUrl,
 			success: function(response){
 				$('#tracks-album').empty();
-				printTracks(response.items);
+				printTracks(response.tracks.items);
 			},
 			error: function(error){
 				console.log(error);
@@ -52,7 +52,7 @@ $(document).ready(function(){
 		});
 	};
 
-	function createElement(artistInfo){
+	function createArtistElement(artistInfo){
 		//console.log(artistInfo.name);
 		var $artistItem = $('<li>');
 		var $artistLink = $('<a href="#">').addClass('artist-result');
@@ -67,11 +67,11 @@ $(document).ready(function(){
 	function printArtists(artists){
 		//console.log(artistsInfo);
 		artists.forEach(function(artist) {
-			createElement(artist);
+			createArtistElement(artist);
 		});
 	}
 
-	function createAlbum(album){
+	function createAlbumElement(album){
 		var $albumItem = $('<li>');
 		var $albumLink = $('<a href="#">').addClass('album-result');
 		$albumLink.html(album.name);
@@ -82,31 +82,45 @@ $(document).ready(function(){
 
 	function printAlbums(albums){
 		albums.forEach(function(album){
-			createAlbum(album);
+			createAlbumElement(album);
 		});
+		$('html, body').animate({
+		    scrollTop: $("#artist-albums").offset().top
+		}, 1000);
 
 	}
 
-	function getTracks(trackInfo){
+	function createTrackElement(trackInfo){
+		// trackInfo.preview_url
 		var $trackItem = $('<li>');
 		var $trackLink = $('<a href="#">').addClass('track-result');
-		var trackUrl = trackInfo.href + "/tracks";
-		$trackLink.attr('data-url', trackUrl)
+		var trackUrl = trackInfo.preview_url;
+		$trackLink.attr('data-preview-url', trackUrl);
 		$trackLink.html(trackInfo.name);
 		$trackItem.html($trackLink);
 		$('#tracks-album').append($trackItem);
-	
 	}
 
 	function printTracks(tracks){
 		tracks.forEach(function(track){
-			getTracks(track);
+			createTrackElement(track);
 		});
+		$('html, body').animate({
+		    scrollTop: $("#tracks-album").offset().top
+		}, 1000);
+	}
+
+	function playSong(event){
+		var $songSelected = $(event.currentTarget);
+		var urlPlay = $songSelected.attr('data-preview-url');
+		$('audio').attr('src',urlPlay)[0].play();
+
 	}
 
 
-	$("#search-button").on("click",searchArtist);
+	$("#search-button").on("click", searchArtist);
 	$('#artist-info').on('click', '.artist-result', getAlbums);
-	$('#artist-albums').on('click', '.album-result', getTracks);
+	$('#artist-albums').on('click', '.album-result', getSongs);
+	$('#tracks-album').on('click', '.track-result', playSong);
 
 });
