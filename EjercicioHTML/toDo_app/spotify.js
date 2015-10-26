@@ -114,7 +114,6 @@ $(document).ready(function(){
 		var $songSelected = $(event.currentTarget);
 		var urlPlay = $songSelected.attr('data-preview-url');
 		$('audio').attr('src',urlPlay)[0].play();
-
 	}
 
 
