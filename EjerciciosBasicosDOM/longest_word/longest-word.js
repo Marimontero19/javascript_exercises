@@ -10,9 +10,11 @@ function longestWord_cont(words) {
 }
 
 function putSentence(){
+	$('#container p').remove();
 	var $sentence = $('<p>');
 	$('#container').append($sentence);
 	var inputSentence = $('#text-input').val();
+	$('#text-input').val("");
 	var word = longestWord(inputSentence);
 	$sentence.append(word);
 }
