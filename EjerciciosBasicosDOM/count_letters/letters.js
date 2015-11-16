@@ -8,6 +8,7 @@ $(document).on('ready', function() {
 	}
 
 	function countWords() {
+		$('#container ul').remove();
 		var inputVal = $('#input-1').val();
 		$('#input-1').val('');
 		var lettersDict = countLetters(inputVal);
@@ -17,8 +18,9 @@ $(document).on('ready', function() {
 
 	function countLetters(val){
 		var solution = {}
-
 		var letters = val.split('');
+
+		var noLetters = (/[.,-\/#!$%\^&\*;:{}=\-_`~()]/g);
 
 		letters.forEach(function(letter) {
 			if (letter == ' ') return;
@@ -26,10 +28,13 @@ $(document).on('ready', function() {
 			var letterNumber = solution[letter];
 			if (letterNumber >= 1){
 				solution[letter] += 1
-			} else {
+			}else {
 				solution[letter] = 1;
 			}
 	
+			if (letter == noLetters){
+				letter.remove();
+			}
 		});
 		return solution;
 	}
