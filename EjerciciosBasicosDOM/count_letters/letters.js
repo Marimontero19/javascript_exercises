@@ -20,20 +20,17 @@ $(document).on('ready', function() {
 		var solution = {}
 		var letters = val.split('');
 
-		var noLetters = (/[.,-\/#!$%\^&\*;:{}=\-_`~()]/g);
+		var  allLetters= ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
 		letters.forEach(function(letter) {
 			if (letter == ' ') return;
+			if (allLetters.indexOf(letter) == -1) return;
 
 			var letterNumber = solution[letter];
 			if (letterNumber >= 1){
 				solution[letter] += 1
 			}else {
 				solution[letter] = 1;
-			}
-	
-			if (letter == noLetters){
-				letter.remove();
 			}
 		});
 		return solution;
