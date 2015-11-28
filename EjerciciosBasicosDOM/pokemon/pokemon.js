@@ -1,22 +1,26 @@
 $(document).on('ready', function() {
  
     function searchPokemon(){
+
+        var searchInput = $('#input-search').val();
+        var searchUrl = 'http://pokeapi.co/api/v1/pokemon/' + searchInput;
         $.ajax({
             type: 'GET',
-            url: 'http://pokeapi.co/api/v1/pokemon/1',
+            url: searchUrl,
             success: function (response) {
                 var nameElement = $('<p>').html(response.name);
                 var weightElement = $('<p>').html('Weight: ' + response.weight);
                 var heightElement = $('<p>').html('Height: ' + response.height);
+                var introList = $('<p>').html('Types:')
 
+                var typeList = $('<ul>');
                 response.types.forEach(function(type){
-                    console.log(type.name);
+                    var li = $('<li>').html(type.name);
+                    li.appendTo(typeList);
                 });
 
 
-
-
-                $('#container').append(nameElement).append(heightElement).append(weightElement);
+                $('#container').append(nameElement).append(heightElement).append(weightElement).append(introList).append(typeList);
 
             },
             error: function (error) {
